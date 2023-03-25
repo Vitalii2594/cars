@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CARS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="page-header-cintainer"></div>
+     <img class="page-logo" src="./image/logo.svg" alt="CARS"
+        />
+      </li>
+      
+        <nav class="page-nav">
+          <ul class="header-list list">
+            <li class="header-item list">
+              <a href="#" class="header-link current-page">Main</a>
+            </li>
+            <li class="header-item">
+              <a href="#" class="header-link">Our services</a>
+            </li>
+            <li class="header-item">
+              <a href="#" class="header-link">About</a>
+            </li>
+            <li class="header-item">
+              <a href="W" class="header-link">Contacts</a>
+            </li>
+          </ul>
+        </nav>
+        <ul class="page-list-lng list">
+          <li class="page-item-lng">
+            <a href="" class="page-link-lng link">ua</a>
+          </li>
+          <li class="page-item-lng ">
+            <a href="" class="page-link-lng current-page-lng link">en</a>
+          </li>
+        </ul>
+            </header>
+      </div>
+    <!-- HERO -->
+    <main>
+      <section class="hero section">
+        <div class="container">
+          <h1 class="page-tile">
+            KEEPING YOU ON THE ROAD WITH SERVICE YOU CAN TRUST
+          </h1>
+          <button type="button" class="hero-btn">Show more</button>
+
+
+<div class="hero-contacts">
+  <ul class="hero-contacts-list list">
+    <button type="button" class="hero-contact-btn">
+      <a class="hero-contact-link" href="222222222"222-222-222>
+      <svg class="hero-btn-icon" width="30" height="30">
+          <use href="./image/symbol.svg#icon-phone"></use>
+        </svg>
+        CALL US NOW 222-222-222
+        <span class="hero-text-btn">Feel free to call us</span>
+    </a>
+  </button>
+
+  <button type="button" class="hero-contact-btn" data-modal-open>
+   
+        <span data-modal-open  class="hero-contact-link">
+        <svg class="hero-btn-icon" width="30" height="30">
+            <use href="./image/symbol.svg#icon-calendar"></use>
+          </svg>
+          GET FREE APPOITMET
+          <span class="hero-text-btn">Free Diagnosis & Brake Checks</span>
+      </span>
+  
+  </button>
+
+    <li  class="hero-contact-item">
+      <a class="hero-contact-link" >
+      <svg class="hero-btn-icon" width="30" height="30">
+          <use href="./image/symbol.svg#icon-pointer"></use>
+        </svg>
+        FIND US ON MAP
+        <span class="hero-text-btn">New York, 1286 Ruumu Nanor</span>
+    </a>
+  </li>
+  </ul>
+</div>
+        </div>
+      </section>
+    </main>
+
+
+     <!-- Modal -->
+
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button type="button" class="modal-close-btn" data-modal-close>
+          <svg class="modal-close-btn-icon" width="8" height="8">
+            <use href="./image/symbol.svg#icon-close-modal"></use>
+          </svg>
+        </button>
+
+        <form class="modal-form">
+          <h2 class="form-title">GET FREE APPOITMET</h2>
+        <label class="modal-btn-lable">
+    Name
+    <input type="text" name="name" required
+                pattern="[a-zA-z]+" class="modal-btn-input"/>
+  </label>
+  <label class="modal-btn-lable">
+    Phone
+    <input type="text" name="name"required
+                pattern="[0-9]+" class="modal-btn-input"/>
+  </label>
+  
+  <label class="modal-btn-lable">
+    Date
+    <input type="date" name="name" class="modal-btn-input"/>
+  </label>
+  <button class="modal-btn-send" type="submit">Send</button>
+
+  <a class="modal-contact-link">
+        Or call us now <span class="modal-contact-tel">222-222-222</span>
+  
+    </a>
+</form>
+      </div>
+      
+    </div>
+
+
+
+
+
+
+
+    <script src="./js/modalcal.js"></script>
+
+
+
+  </body>
+</html>
