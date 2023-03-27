@@ -518,3 +518,36 @@ th {
  background-color: #171616;
  height: 665px;
 }
+.section-two-title {
+ font-weight: 700;
+ font-size: 30px;
+ line-height: 150%;
+ letter-spacing: 0.15em;
+ text-transform: uppercase;
+ color: #ffffff;
+ width: 490px;
+ padding-top: 117px;
+}
+.section-two-text {
+ font-weight: 600;
+ font-size: 15px;
+ line-height: 150%;
+ letter-spacing: 0.23em;
+ color: #b7b7b7;
+ width: 490px;
+
+ margin-top: 42px;
+}
+.section-two-link {
+ font-weight: 500;
+ font-size: 18px;
+ line-height: 150%;
+ letter-spacing: 0.15em;
+ text-decoration-line: underline;
+ text-transform: uppercase;
+ color: #ffffff;
+ width: 490px;
+ margin-top: 42px;
+}
+.section-two-img {
+}
