@@ -362,7 +362,7 @@ th {
  transition: transform 250ms linear;
  width: 800px;
  height: 990px;
- background-image: url(/image/road.jpg);
+ background-image: url(../image/road.jpg);
  background-repeat: no-repeat;
  background-size: cover;
  background-position: left bottom;
