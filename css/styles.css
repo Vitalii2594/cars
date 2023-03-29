@@ -110,7 +110,7 @@ body {
 
 /* HERO */
 .hero {
- background-image: url(/image/road.jpg);
+ background-image: url(../image/road.jpg);
  background-color: #303030;
  height: 750px;
  margin-top: 0;
