@@ -18,21 +18,20 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <header class="page-header">
-      <div class="page-header-cintainer"></div>
-     <img class="page-logo" src="./image/logo.svg" alt="CARS"
-        />
-      </li>
+<header class="page-header">
+      <div class="page-header-cintainer">
+         <img class="page-logo" src="./image/logo.svg" alt="CARS"/>
+     
         <nav class="page-nav">
           <ul class="header-list list">
             <li class="header-item list">
               <a href="#" class="header-link current-page">Main</a>
             </li>
             <li class="header-item">
-              <a href="#" class="header-link">Our services</a>
+              <a href="#Our-services" class="header-link">Our services</a>
             </li>
             <li class="header-item">
-              <a href="#" class="header-link">About</a>
+              <a href="#about-us" class="header-link">About</a>
             </li>
             <li class="header-item">
               <a href="#" class="header-link">Contacts</a>
@@ -47,33 +46,37 @@
             <a href="" class="page-link-lng current-page-lng link">en</a>
           </li>
         </ul>
-            </header>
       </div>
+    
+</header>
+    
     <!-- HERO -->
-    <main>
-      <section class="hero section">
+<main>
+<section class="hero section">
         <div class="container">
           <h1 class="page-tile">
             KEEPING YOU ON THE ROAD WITH SERVICE YOU CAN TRUST
           </h1>
           <button type="button" class="hero-btn">Show more</button>
 <div class="hero-contacts">
-  <ul class="hero-contacts-list list">
+  <div class="hero-contacts-list list">
   
-      <a class="hero-contact-link link" href="222222222"222-222-222>
-      <svg class="hero-btn-icon" width="30" height="30">
-          <use href="./image/symbol.svg#icon-phone"></use>
+    <address>
+      <a class="hero-contact-link link" href="222222222">222-222-222
+        <svg class="hero-btn-icon" width="30" height="30">
+            <use href="./image/symbol.svg#icon-phone"></use>
         </svg>
-        CALL US NOW 222-222-222
-        <span class="hero-text-btn">Feel free to call us</span>
-    </a>
-  <button data-modal-open type="button" class="hero-contact-btn" >
+          CALL US NOW 222-222-222
+          <span class="hero-text-btn">Feel free to call us</span>
+        </a>
+    </address>
+    <button data-modal-open type="button" class="hero-contact-btn" >
         <svg class="hero-btn-icon" width="30" height="30">
             <use href="./image/symbol.svg#icon-calendar"></use>
           </svg>
           <span class="hero-text-btn-ttl">GET FREE APPOITMET</span>
           <span class="hero-text-btn">Free Diagnosis & Brake Checks</span>
-  </button>
+    </button>
 
     <button type="button" data-modal-map-open class="hero-contact-btn" >
 
@@ -82,14 +85,14 @@
         </svg>
         <span class="hero-text-btn-ttl">FIND US ON MAP</span>
         <span class="hero-text-btn">New York, 1286 Ruumu Nanor</span>
-  </button>
-  </ul>
+   </button>
+  </div>
 </div>
         </div>
-      </section>
+</section>
 <!-- HERO END -->
 <!-- SECTION 1 -->
-<section class="section-one section">
+<section id="Our-services" class="section-one section">
   <div class="container">
     <h2 class="our-services-title">Our services</h2>
     <ul class="our-services-list list">
@@ -122,9 +125,11 @@
     </ul>
   </div>
 </section>
-<section class="section-two section">
+<!-- SECTION 2 -->
+<section id="about-us" class="section-two section">
   <div class="container section-two-container ">
-    <div class="st-1">
+    
+    <div  class="st-1">
       <h2 class="section-two-title">WE UNDERSTAND HOW IMPORTANT IT IS TO FIND THE RIGHT AUTO SERVICE</h2>
        <p class="section-two-text">Car repairs and maintenance can be expensive and no one wants to
         have pay to repair damage caused by shoddy repair service. When you
@@ -137,11 +142,10 @@
      <img class="section-two-img" src="./image/one.jpg" alt="engine" width="513" height="342">
   </div>
 </section>
+<!-- SECTION 3 -->
 <section class="section section-three">
-
   <div class="container">
-    <h2 class="s3-ttl">FAST & EASY
-</h2>
+    <h2 class="s3-ttl">FAST & EASY</h2>
     <p class="sec-three-text" >our work process</p>
     <ul class="s3-list">
       <li class="s3-item list">
@@ -156,7 +160,7 @@
           <span class="sec-three-link-text">We are car guys at heart
         </span>
         </a>
-        
+      
       </li>
       <li class="s3-item list">
         <a class="section-three-link link" href="">03. GET IT REPAIRED 
@@ -165,45 +169,42 @@
           </a>
       </li>
     </ul>
-
-
   </div>
-
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+<!-- SECTION 4 -->
+<section id="contacts" class="section section-four">
+<div class="container">
+  <div class="form-wrap">
+    <form class="contacts-form">
+      <h2 class="contacts-title">Contact us</h2>
+      <label>
+        <input type="text" name="name" required pattern="[a-zA-z]+" class="contacts-input"/>
+      </label>
+      <label type="text" name="name" required pattern="[a-zA-z]+" class="contacts-input">
+        <input/>
+      </label>
+      <label>
+        <input/>
+      </label>
+      <label>
+        <input/>
+      </label>
+      <label>
+        <input/>
+      </label>
+      <label>
+        <input/>
+      </label>
+    </form>
+  </div>
+</div>
+</section>
 </main>
-
-  </body>
-
-
+<script src="./js/modalcal.js"></script>
+<script src="./js/modal-map.js"></script>
+</body>
 <!-- Modal -->
-
-    <div class="backdrop is-hidden" data-modal>
+<div class="backdrop is-hidden" data-modal>
   <div class="modal">
     <button type="button" class="modal-close-btn" data-modal-close>
       <svg class="modal-close-btn-icon" width="8" height="8">
@@ -384,8 +385,5 @@
   </div>
   </div>
 </div>
-
-
-<script src="./js/modalcal.js"></script>
-<script src="./js/modal-map.js"></script>
 </html>
+
