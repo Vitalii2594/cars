@@ -9,6 +9,10 @@
   border: none;
 }
 
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
 .container {
   max-width: 1200px;
   width: 100%;
