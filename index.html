@@ -1,143 +1,376 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeSync Solutions</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Irregular Verbs — Single File App</title>
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#0f1724; --accent:#10b981; --muted:#6b7280;
+      --white:#ffffff;
+    }
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#eef2ff 0%, #f6f8fb 100%);
+      color:#0b1220; -webkit-font-smoothing:antialiased;
+      padding:28px;
+    }
+    .wrap{max-width:1100px;margin:0 auto;}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    header h1{font-size:20px;margin:0}
+    .card{
+      background:var(--white); border-radius:12px; padding:18px; box-shadow:0 6px 18px rgba(12,20,40,0.06);
+    }
+    form.addform{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .addform input[type="text"]{
+      padding:8px 10px;border-radius:8px;border:1px solid #e6eef8;min-width:150px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .addform button{background:var(--accent);color:white;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+    .controls{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+    .controls button, .controls label{
+      padding:8px 10px;border-radius:8px;border:1px solid #dbeafe;background:white;cursor:pointer;
+    }
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:#0b1220;color:white}
+    thead th{padding:10px;text-align:left;font-weight:600}
+    tbody td{padding:10px;border-bottom:1px solid #eef2ff;vertical-align:middle}
+    tbody tr:nth-child(odd){background:rgba(15,23,36,0.03)}
+    .small{font-size:13px;color:var(--muted)}
+    .actions{display:flex;gap:8px}
+    .btn-del{background:#fee2e2;border:1px solid #fecaca;color:#9b1c1c;padding:6px 8px;border-radius:6px;cursor:pointer}
+    .btn-edit{background:#fef3c7;border:1px solid #fde68a;color:#92400e;padding:6px 8px;border-radius:6px;cursor:pointer}
+    .search{margin-left:auto;display:flex;gap:8px;align-items:center}
+    .file-input{display:none}
+    footer{margin-top:14px;font-size:13px;color:var(--muted);text-align:center}
+    @media (max-width:800px){
+      thead th:nth-child(4), tbody td:nth-child(4){display:none}
+    }
+  </style>
 </head>
 <body>
-
-    <!-- Nagłówek i Baner -->
-    <header class="header">
-      <div class="container">
-
-        <nav class="nav">
-          <img src="./img/logo.svg" alt="HomeSync Solutions" class="logo">
-          <ul class="nav__links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#contact">Contact</a></li>
-          </ul>
-      </nav>
-      <div class="banner">
-          <h1>Synchronizuj swój dom, uprość swoje życie</h1>
-          <a href="#services" class="btn btn-primary">Zobacz nasze usługi</a>
-          <a href="#contact" class="btn btn-secondary">Umów się na konsultację</a>
+  <div class="wrap">
+    <header class="card" style="align-items:center;display:flex;justify-content:space-between">
+      <div>
+        <h1>Irregular Verbs — One-file App</h1>
+        <div class="small">Dodaj / eksportuj / importuj bazę. Działa offline (localStorage) i z plikiem JSON.</div>
       </div>
-
+      <div style="display:flex;gap:10px;align-items:center">
+        <button id="exportBtn" title="Eksportuj całą bazę do pliku JSON">Export JSON</button>
+        <label for="importFile" title="Importuj JSON (zastąpi/połączy bazę)">
+          Import JSON
+          <input id="importFile" class="file-input" type="file" accept=".json" />
+        </label>
+        <button id="clearLocal" title="Wyczyść dane z localStorage">Wyczyść localStorage</button>
       </div>
-
-       
     </header>
 
-    <!-- Sekcja "O Nas" -->
-    <section id="about" class="about">
-        <h2>O Nas</h2>
-        <p>HomeSync Solutions to zespół ekspertów dedykowanych do transformacji Twojego domu w inteligentną, efektywną i bezpieczną przestrzeń. Dzięki naszym usługom, możesz cieszyć się wygodą nowoczesnej technologii w codziennym życiu.</p>
-        <p>Doświadczenie naszego zespołu oraz zaufanie klientów to fundamenty naszego sukcesu.</p>
-    </section>
-
-    <!-- Przegląd Usług -->
-    <section id="services" class="services">
-        <h2>Nasze Usługi</h2>
-        <div class="services__list">
-            <div class="services__item">
-                <img src="./images/automation-icon.svg" alt="Home Automation">
-                <h3>Home Automation Setup</h3>
-                <p>Kompleksowa instalacja systemów automatyki domowej, która pozwala na pełną kontrolę nad domem z poziomu urządzeń mobilnych.</p>
-            </div>
-            <div class="services__item">
-                <img src="./images/security-icon.svg" alt="Security Systems">
-                <h3>Security System Integration</h3>
-                <p>Profesjonalne wdrożenie systemów zabezpieczeń, zapewniających bezpieczeństwo Twojego domu przez całą dobę.</p>
-            </div>
-            <div class="services__item">
-                <img src="./images/lighting-icon.svg" alt="Smart Lighting">
-                <h3>Smart Lighting Installation</h3>
-                <p>Inteligentne oświetlenie dostosowane do Twojego stylu życia, które zapewnia oszczędność energii i wygodę.</p>
-            </div>
-            <div class="services__item">
-                <img src="./images/hvac-icon.svg" alt="HVAC Systems">
-                <h3>HVAC Control Systems</h3>
-                <p>Zaawansowane systemy zarządzania klimatyzacją i ogrzewaniem, zapewniające optymalne warunki w domu przez cały rok.</p>
-            </div>
+    <section class="card" style="margin-top:14px">
+      <form id="addForm" class="addform" onsubmit="return false;">
+        <input id="inf" placeholder="Infinitive (1 forma)" required />
+        <input id="past1" placeholder="Past Simple (2 forma)" required />
+        <input id="past2" placeholder="Past Participle (3 forma)" required />
+        <input id="trans" placeholder="Tłumaczenie (укр/PL)" />
+        <button id="addBtn">Dodaj</button>
+        <div class="search" style="margin-left:auto">
+          <input id="filter" placeholder="Szukaj..." />
         </div>
+      </form>
+
+      <div style="overflow:auto">
+        <table id="verbsTable" aria-live="polite">
+          <thead>
+            <tr>
+              <th>Infinitive</th>
+              <th>Past Simple</th>
+              <th>Past Participle</th>
+              <th>Tłumaczenie</th>
+              <th style="text-align:center">Akcje</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button id="downloadCsv">Pobierz CSV</button>
+        <button id="resetDemo">Przywróć przykładowe dane</button>
+      </div>
+
     </section>
 
-    <!-- Opinie klientów -->
-    <section class="testimonials">
-        <h2>Opinie klientów</h2>
-        <div class="testimonials__slider">
-            <div class="testimonial">
-                <p>"HomeSync Solutions przekształciło mój dom w prawdziwie inteligentną przestrzeń. Pełna kontrola z poziomu telefonu to niesamowite doświadczenie!"</p>
-                <span>- Anna Kowalska</span>
-            </div>
-            <div class="testimonial">
-                <p>"Zespół wykazał się ogromnym profesjonalizmem i zaangażowaniem. Bezpieczeństwo mojego domu nigdy nie było tak dobrze zorganizowane."</p>
-                <span>- Jan Nowak</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sekcja "Jak to działa" -->
-    <section class="how-it-works">
-        <h2>Jak to działa?</h2>
-        <div class="steps">
-            <div class="step">
-                <h3>Krok 1: Konsultacja</h3>
-                <p>Spotkaj się z naszym ekspertem, aby omówić Twoje potrzeby i oczekiwania.</p>
-            </div>
-            <div class="step">
-                <h3>Krok 2: Projektowanie</h3>
-                <p>Stworzymy indywidualny projekt dostosowany do Twojego domu.</p>
-            </div>
-            <div class="step">
-                <h3>Krok 3: Instalacja</h3>
-                <p>Nasza ekipa zajmie się profesjonalną instalacją wybranych systemów.</p>
-            </div>
-            <div class="step">
-                <h3>Krok 4: Wsparcie</h3>
-                <p>Oferujemy stałe wsparcie techniczne i serwisowe, abyś mógł cieszyć się pełnią możliwości smart home.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sekcja CTA -->
-    <section class="cta">
-        <h2>Zainteresowany? Skontaktuj się z nami!</h2>
-        <a href="#contact" class="btn btn-primary">Umów się na darmową konsultację</a>
-        <a href="#services" class="btn btn-secondary">Zobacz katalog usług</a>
-    </section>
-
-    <!-- Sekcja Kontakt -->
-    <section id="contact" class="contact">
-        <h2>Kontakt</h2>
-        <form class="contact__form">
-            <input type="text" placeholder="Twoje imię" required />
-            <input type="email" placeholder="Twój e-mail" required />
-            <input type="tel" placeholder="Twój numer telefonu" required />
-            <textarea placeholder="Twoja wiadomość" required></textarea>
-            <button type="submit" class="btn btn-primary">Wyślij wiadomość</button>
-        </form>
-        <div class="contact__info">
-            <p>Adres: ul. Przykładowa 123, Warszawa</p>
-            <p>Telefon: +48 123 456 789</p>
-            <p>Email: kontakt@homesync.pl</p>
-            <div class="map">
-                <!-- Integracja Google Maps -->
-                <iframe src="https://maps.google.com/maps?q=Warszawa&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sekcja Footer -->
-    <footer class="footer">
-        <p>© 2023 HomeSync Solutions. Wszelkie prawa zastrzeżone.</p>
+    <footer class="small card" style="margin-top:12px">
+      <div>Instrukcja: Dodaj słowo -> Export JSON (zachowaj plik). Aby przenieść na inny komputer, Importuj ten plik. Możesz też hostować tę stronę jako statyczny projekt na GitHub Pages.</div>
     </footer>
+  </div>
 
-    <script src="script.js"></script>
+  <script>
+/* ========= Dane początkowe (przykładowe) ========= */
+const initialVerbs = [
+  ["be","was / were","been","бути"],
+  ["have","had","had","мати"],
+  ["do","did","done","робити"],
+  ["say","said","said","казати"],
+  ["get","got","got / gotten","отримувати"],
+  ["make","made","made","робити, виготовляти"],
+  ["go","went","gone","йти"],
+  ["wake","woke","woken","прокидатися"],
+  ["eat","ate","eaten","їсти"],
+  ["see","saw","seen","бачити"],
+  ["come","came","come","приходити"],
+  ["drink","drank","drunk","пити"],
+  ["become","became","become","ставати"],
+  ["buy","bought","bought","купувати"],
+  ["forget","forgot","forgotten","забувати"],
+  ["hide","hid","hidden","ховати"],
+  ["keep","kept","kept","тримати, зберігати"],
+  ["lose","lost","lost","втрачати"],
+  ["run","ran","run","бігти"],
+  ["sleep","slept","slept","спати"],
+  ["spend","spent","spent","витрачати"],
+  ["take","took","taken","брати"],
+  ["understand","understood","understood","розуміти"],
+  ["write","wrote","written","писати"],
+  ["begin","began","begun","починати"],
+  ["break","broke","broken","ламати"],
+  ["bring","brought","brought","приносити"],
+  ["build","built","built","будувати"],
+  ["choose","chose","chosen","вибирати"],
+  ["cut","cut","cut","різати"],
+  ["deal","dealt","dealt","мати справу"],
+  ["draw","drew","drawn","малювати"],
+  ["fall","fell","fallen","падати"],
+  ["feel","felt","felt","відчувати"],
+  ["fight","fought","fought","боротися"],
+  ["find","found","found","знаходити"],
+  ["fly","flew","flown","летіти"],
+  ["freeze","froze","frozen","замерзати"],
+  ["give","gave","given","давати"],
+  ["grow","grew","grown","рости"],
+  ["hang","hung","hung","вішати"],
+  ["hear","heard","heard","чути"],
+  ["hold","held","held","тримати"],
+  ["know","knew","known","знати"],
+  ["learn","learned / learnt","learned / learnt","вчити"],
+  ["leave","left","left","залишати, йти"],
+  ["lend","lent","lent","позичати (комусь)"],
+  ["let","let","let","дозволяти"],
+  ["lie","lay","lain","лежати"],
+  ["meet","met","met","зустрічати"],
+  ["pay","paid","paid","платити"],
+  ["put","put","put","класти"],
+  ["read","read","read","читати"],
+  ["ride","rode","ridden","їхати верхи"],
+  ["ring","rang","rung","дзвонити"],
+  ["sell","sold","sold","продавати"],
+  ["send","sent","sent","надсилати"],
+  ["shine","shone","shone","світити"],
+  ["show","showed","shown","показувати"],
+  ["sing","sang","sung","співати"],
+  ["sit","sat","sat","сидіти"],
+  ["speak","spoke","spoken","говорити"],
+  ["stand","stood","stood","стояти"],
+  ["swim","swam","swum","плавати"],
+  ["teach","taught","taught","викладати, навчати"],
+  ["tell","told","told","розповідати"],
+  ["think","thought","thought","думати"],
+  ["wear","wore","worn","носити (одяг)"],
+  ["win","won","won","вигравати"],
+  ["work","worked","worked","працювати"],
+  ["throw","threw","thrown","кидати"]
+];
+
+/* ======= Logika aplikacji ======= */
+const STORAGE_KEY = "irregular_verbs_db_v1";
+let verbs = [];
+
+/* Elementy UI */
+const tbody = document.querySelector("#verbsTable tbody");
+const addForm = document.getElementById("addForm");
+const infInput = document.getElementById("inf");
+const past1Input = document.getElementById("past1");
+const past2Input = document.getElementById("past2");
+const transInput = document.getElementById("trans");
+const addBtn = document.getElementById("addBtn");
+const exportBtn = document.getElementById("exportBtn");
+const importFile = document.getElementById("importFile");
+const clearLocal = document.getElementById("clearLocal");
+const filter = document.getElementById("filter");
+const downloadCsv = document.getElementById("downloadCsv");
+const resetDemo = document.getElementById("resetDemo");
+
+function loadFromStorage(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw){
+    try{
+      const parsed = JSON.parse(raw);
+      if(Array.isArray(parsed)) { verbs = parsed; return; }
+    }catch(e){}
+  }
+  // jeśli brak localStorage — załaduj dane początkowe
+  verbs = initialVerbs.slice();
+  saveToStorage();
+}
+
+function saveToStorage(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(verbs));
+}
+
+function renderTable(filterText = ""){
+  tbody.innerHTML = "";
+  const ft = String(filterText).trim().toLowerCase();
+  verbs.forEach((row, idx) => {
+    const [inf,p1,p2,trans] = row;
+    const rowText = (inf + " " + p1 + " " + p2 + " " + (trans||"")).toLowerCase();
+    if(ft && !rowText.includes(ft)) return;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><strong>${escapeHtml(inf)}</strong></td>
+      <td>${escapeHtml(p1)}</td>
+      <td>${escapeHtml(p2)}</td>
+      <td>${escapeHtml(trans || "")}</td>
+      <td style="text-align:center">
+        <div class="actions">
+          <button class="btn-del" data-idx="${idx}" title="Usuń">Usuń</button>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+  attachDeleteHandlers();
+}
+
+function attachDeleteHandlers(){
+  document.querySelectorAll(".btn-del").forEach(btn => {
+    btn.onclick = (e) => {
+      const i = Number(btn.getAttribute("data-idx"));
+      if(Number.isInteger(i)){
+        if(confirm("Usuń to słowo?")) {
+          verbs.splice(i,1);
+          saveToStorage();
+          renderTable(filter.value);
+        }
+      }
+    }
+  });
+}
+
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+/* ===== Eventy ===== */
+addBtn.addEventListener("click", function(){
+  const inf = infInput.value.trim();
+  const p1 = past1Input.value.trim();
+  const p2 = past2Input.value.trim();
+  const tr = transInput.value.trim();
+  if(!inf||!p1||!p2){ alert("Wypełnij 1., 2. i 3. formę."); return; }
+  // unikaj duplikatów: jeśli już jest ten infinitive, pytaj
+  const exists = verbs.findIndex(v=>v[0].toLowerCase() === inf.toLowerCase());
+  if(exists !== -1){
+    if(!confirm("To infinitive już istnieje. Dodaj mimo to?")) return;
+  }
+  verbs.push([inf,p1,p2,tr]);
+  saveToStorage();
+  renderTable(filter.value);
+  infInput.value = past1Input.value = past2Input.value = transInput.value = "";
+  infInput.focus();
+});
+
+filter.addEventListener("input", ()=> renderTable(filter.value));
+
+exportBtn.addEventListener("click", ()=> {
+  const dataStr = JSON.stringify(verbs, null, 2);
+  const blob = new Blob([dataStr], {type: "application/json;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  const date = new Date().toISOString().slice(0,19).replace(/[:T]/g,"-");
+  a.download = `irregular_verbs_${date}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+importFile.addEventListener("change", (ev) => {
+  const f = ev.target.files[0];
+  if(!f) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    try{
+      const parsed = JSON.parse(e.target.result);
+      if(!Array.isArray(parsed)) throw new Error("Invalid format");
+      // Zapytaj użytkownika czy merge czy replace
+      if(confirm("Chcesz POŁĄCZYĆ (OK) czy ZASTĄPIĆ (Anuluj) obecną bazę?")){
+        // merge: dodaj elementy, unikając duplikatów po infinitive
+        parsed.forEach(p=>{
+          if(Array.isArray(p) && p[0]){
+            const exist = verbs.find(v=>v[0].toLowerCase()===String(p[0]).toLowerCase());
+            if(!exist) verbs.push([String(p[0]), String(p[1]||""), String(p[2]||""), String(p[3]||"")]);
+          }
+        });
+      } else {
+        // replace
+        verbs = parsed.map(p => Array.isArray(p) ? [String(p[0]||""), String(p[1]||""), String(p[2]||""), String(p[3]||"")] : []);
+      }
+      saveToStorage();
+      renderTable(filter.value);
+      alert("Import zakończony pomyślnie.");
+    }catch(err){
+      alert("Błąd importu: plik nieprawidłowy.");
+      console.error(err);
+    }
+  };
+  reader.readAsText(f, "utf-8");
+  // reset input
+  ev.target.value = "";
+});
+
+clearLocal.addEventListener("click", ()=> {
+  if(confirm("Usunąć wszystkie dane z localStorage i przywrócić domyślne?")){
+    localStorage.removeItem(STORAGE_KEY);
+    loadFromStorage();
+    renderTable();
+  }
+});
+
+downloadCsv.addEventListener("click", ()=> {
+  const header = ["Infinitive","Past Simple","Past Participle","Translation"];
+  const rows = [header].concat(verbs);
+  const csv = rows.map(r => r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "irregular_verbs.csv";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+resetDemo.addEventListener("click", ()=> {
+  if(confirm("Przywrócić dane demo (nadpisze aktualną bazę)?")){
+    verbs = initialVerbs.slice();
+    saveToStorage();
+    renderTable();
+  }
+});
+
+/* ===== Inicjalizacja ===== */
+loadFromStorage();
+renderTable();
+
+/* (opcjonalne) obsługa drag & drop JSON na ciało strony */
+document.addEventListener("dragover", e=>e.preventDefault());
+document.addEventListener("drop", e=>{
+  e.preventDefault();
+  if(e.dataTransfer.files && e.dataTransfer.files.length){
+    const f = e.dataTransfer.files[0];
+    if(f.type.includes("json") || f.name.endsWith(".json")){
+      importFile.files = e.dataTransfer.files;
+      const ev = new Event('change');
+      importFile.dispatchEvent(ev);
+    }
+  }
+});
+  </script>
 </body>
 </html>
